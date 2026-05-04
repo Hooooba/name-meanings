@@ -13,7 +13,6 @@
         :root {
             --primary: #4a0e4e;
             --primary-light: #7b3f7d;
-            --bg: #fdf7ff;
             --card-bg: #ffffff;
             --text: #2d1b2e;
             --muted: #6c5b6e;
@@ -29,8 +28,6 @@
             color: var(--text);
             line-height: 1.6;
             padding: 20px;
-            display: flex;
-            justify-content: center;
         }
         @keyframes backgroundFlow {
             0%, 100% { background-position: 0% 50%; }
@@ -38,7 +35,7 @@
         }
         .wrapper {
             max-width: 1200px;
-            width: 100%;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 300px;
             gap: 30px;
@@ -192,12 +189,12 @@
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.15); opacity: 0.7; }
         }
-        footer {
-            margin-top: 40px;
+        /* Футер теперь отдельно, по центру */
+        .site-footer {
             text-align: center;
+            margin-top: 40px;
             color: var(--muted);
             font-size: 0.9em;
-            grid-column: 1 / -1;
         }
     </style>
 </head>
@@ -226,6 +223,12 @@
             </div>
             <div class="name-card" data-name="абдуллах">
                 <a href="абдуллах.html">Абдуллах</a>
+            </div>
+            <div class="name-card" data-name="абид">
+                <a href="абид.html">Абид</a>
+            </div>
+            <div class="name-card" data-name="аботур">
+                <a href="аботур.html">Аботур</a>
             </div></div>
         </div>
             </div>
@@ -234,13 +237,13 @@
             <div class="ad-block">
                 <div class="ad-placeholder">
                     <i class="fas fa-ad" style="font-size:2em; margin-bottom:10px; display:block;"></i>
-                    AdSense (300x600)
+                    Место для рекламы
                 </div>
             </div>
             <div class="ad-block" style="min-height:250px;">
                 <div class="ad-placeholder">
                     <i class="fas fa-ad" style="font-size:2em; margin-bottom:10px; display:block;"></i>
-                    AdSense (300x250)
+                    Место для рекламы
                 </div>
             </div>
             <div class="coming-soon">
@@ -248,11 +251,11 @@
                 <div class="feature-item"><i class="fas fa-yin-yang"></i> Калькулятор Ба-Цзы</div>
                 <div class="feature-item"><i class="fas fa-heart"></i> Совместимость имён</div>
                 <div class="feature-item"><i class="fas fa-star"></i> Карта Таро дня</div>
-                <div class="feature-item"><i class="fas fa-file-pdf"></i> Гороскопы</div>
+                <div class="feature-item"><i class="fas fa-file-pdf"></i> Платные гороскопы</div>
             </div>
         </aside>
     </div>
-    <footer>
+    <footer class="site-footer">
         <p>© 2025 Тайна имени · Все права защищены</p>
     </footer>
     <script>
@@ -293,7 +296,6 @@
             });
         });
 
-        // Анимация появления секций при прокрутке
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
