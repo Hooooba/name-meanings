@@ -23,12 +23,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #fef7ff 0%, #f3e9ff 100%);
+            background: linear-gradient(135deg, #fef7ff, #f3e9ff, #ece1ff);
+            background-size: 200% 200%;
+            animation: backgroundFlow 12s ease infinite;
             color: var(--text);
             line-height: 1.6;
             padding: 20px;
             display: flex;
             justify-content: center;
+        }
+        @keyframes backgroundFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         .wrapper {
             max-width: 1200px;
@@ -75,6 +81,16 @@
             color: var(--primary);
             margin-bottom: 20px;
             line-height: 1.2;
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .subtitle {
+            font-size: 1.1em;
+            color: var(--muted);
+            margin-bottom: 30px;
         }
         .search-box {
             position: relative;
@@ -87,10 +103,11 @@
             border-radius: 50px;
             font-size: 1.1em;
             outline: none;
-            transition: border-color 0.3s;
+            transition: box-shadow 0.3s, border-color 0.3s;
             font-family: 'Inter', sans-serif;
         }
         .search-box input:focus {
+            box-shadow: 0 0 20px rgba(122, 61, 125, 0.15);
             border-color: var(--primary-light);
         }
         .search-box i {
@@ -127,12 +144,13 @@
             background: #fdf7ff;
             border-radius: 12px;
             padding: 12px 15px;
-            transition: all 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
             box-shadow: 0 2px 8px rgba(74,14,78,0.04);
         }
         .name-card:hover {
             background: var(--primary);
-            box-shadow: 0 6px 16px rgba(74,14,78,0.15);
+            box-shadow: 0 10px 25px rgba(74,14,78,0.2);
+            transform: translateY(-4px);
         }
         .name-card a {
             text-decoration: none;
@@ -168,6 +186,11 @@
         .feature-item i {
             color: var(--primary-light);
             width: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.7; }
         }
         footer {
             margin-top: 40px;
@@ -182,7 +205,7 @@
     <div class="wrapper">
         <main>
             <h1>🌟 Тайна имени</h1>
-            <p style="font-size:1.1em; color: var(--muted);">Найдите значение своего имени или выберите из алфавитного списка</p>
+            <p class="subtitle">Найдите значение своего имени или выберите из алфавитного списка</p>
             <div class="search-box">
                 <input type="text" id="search" placeholder="Введите имя...">
                 <i class="fas fa-search"></i>
@@ -200,6 +223,9 @@
             </div>
             <div class="name-card" data-name="абд-аль-узза">
                 <a href="абд-аль-узза.html">Абд-аль-узза</a>
+            </div>
+            <div class="name-card" data-name="абдуллах">
+                <a href="абдуллах.html">Абдуллах</a>
             </div></div>
         </div>
             </div>
@@ -238,7 +264,6 @@
             const query = e.target.value.toLowerCase().trim();
             
             if (query === '') {
-                // Показать все секции, скрыть только если секция пуста
                 sections.forEach(section => {
                     const visibleCards = section.querySelectorAll('.name-card:not(.hidden)');
                     if (visibleCards.length > 0) {
@@ -258,7 +283,6 @@
                 }
             });
 
-            // Скрыть буквенные секции, если в них не осталось видимых карточек
             sections.forEach(section => {
                 const visibleCards = section.querySelectorAll('.name-card:not(.hidden)');
                 if (visibleCards.length === 0) {
@@ -269,7 +293,7 @@
             });
         });
 
-        // Анимация появления секций
+        // Анимация появления секций при прокрутке
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
