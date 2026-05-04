@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Значения имён — Тайна имени</title>
+    <meta name="description" content="Полный справочник имён с толкованием значения, характера, судьбы и талисманов. Найдите своё имя!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a0e4e;
+            --primary-light: #7b3f7d;
+            --bg: #fdf7ff;
+            --card-bg: #ffffff;
+            --text: #2d1b2e;
+            --muted: #6c5b6e;
+            --radius: 20px;
+            --shadow: 0 12px 30px rgba(0,0,0,0.05);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e9ff 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .wrapper { grid-template-columns: 1fr; }
+        }
+        main {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .ad-block {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+        }
+        .ad-placeholder {
+            border: 2px dashed #e0d4e5;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .search-box {
+            position: relative;
+            margin: 30px 0;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0d4e5;
+            border-radius: 50px;
+            font-size: 1.1em;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .search-box input:focus {
+            border-color: var(--primary-light);
+        }
+        .search-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-light);
+            font-size: 1.2em;
+        }
+        .letter-section {
+            margin: 30px 0;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: var(--primary-light);
+            border-bottom: 2px solid #f0e6f2;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .name-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        .name-card {
+            background: #fdf7ff;
+            border-radius: 12px;
+            padding: 12px 15px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(74,14,78,0.04);
+        }
+        .name-card:hover {
+            background: var(--primary);
+            box-shadow: 0 6px 16px rgba(74,14,78,0.15);
+        }
+        .name-card a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .name-card:hover a {
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .coming-soon {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        .coming-soon h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .feature-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0e6f2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+        }
+        .feature-item i {
+            color: var(--primary-light);
+            width: 24px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9em;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <main>
+            <h1>🌟 Тайна имени</h1>
+            <p style="font-size:1.1em; color: var(--muted);">Найдите значение своего имени или выберите из алфавитного списка</p>
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Введите имя...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="alphabet-container">
+                
+        <div class="letter-section" id="letter-а">
+            <h2 class="letter-title">А</h2>
+            <div class="name-grid">
+            <div class="name-card" data-name="аарон">
+                <a href="аарон.html">Аарон</a>
+            </div>
+            <div class="name-card" data-name="аббас">
+                <a href="аббас.html">Аббас</a>
+            </div>
+            <div class="name-card" data-name="абд-аль-узза">
+                <a href="абд-аль-узза.html">Абд-аль-узза</a>
+            </div></div>
+        </div>
+            </div>
+        </main>
+        <aside>
+            <div class="ad-block">
+                <div class="ad-placeholder">
+                    <i class="fas fa-ad" style="font-size:2em; margin-bottom:10px; display:block;"></i>
+                    AdSense (300x600)
+                </div>
+            </div>
+            <div class="ad-block" style="min-height:250px;">
+                <div class="ad-placeholder">
+                    <i class="fas fa-ad" style="font-size:2em; margin-bottom:10px; display:block;"></i>
+                    AdSense (300x250)
+                </div>
+            </div>
+            <div class="coming-soon">
+                <h3>✨ Скоро на сайте</h3>
+                <div class="feature-item"><i class="fas fa-yin-yang"></i> Калькулятор Ба-Цзы</div>
+                <div class="feature-item"><i class="fas fa-heart"></i> Совместимость имён</div>
+                <div class="feature-item"><i class="fas fa-star"></i> Карта Таро дня</div>
+                <div class="feature-item"><i class="fas fa-file-pdf"></i> Платные гороскопы</div>
+            </div>
+        </aside>
+    </div>
+    <footer>
+        <p>© 2025 Тайна имени · Все права защищены</p>
+    </footer>
+    <script>
+        const searchInput = document.getElementById('search');
+        const sections = document.querySelectorAll('.letter-section');
+        const cards = document.querySelectorAll('.name-card');
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query === '') {
+                // Показать все секции, скрыть только если секция пуста
+                sections.forEach(section => {
+                    const visibleCards = section.querySelectorAll('.name-card:not(.hidden)');
+                    if (visibleCards.length > 0) {
+                        section.classList.remove('hidden');
+                    }
+                });
+                cards.forEach(card => card.classList.remove('hidden'));
+                return;
+            }
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name && name.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Скрыть буквенные секции, если в них не осталось видимых карточек
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.name-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Анимация появления секций
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.letter-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
